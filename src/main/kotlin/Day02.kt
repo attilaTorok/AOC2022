@@ -1,8 +1,11 @@
 /**
  * The shape what the opponent chooses.
  *
- * The value represents how much does the shape worth. The method score calculates the point for the second part of the
- * exercise.
+ * The value represents how much does the shape worth. The method score, calculates the points for the second part of
+ * the exercise.
+ *
+ * In part two, the second column says how the round needs to end: X means you need to lose, Y means you need to end the
+ * round in a draw, and Z means you need to win.
  */
 enum class OpponentShape(val value: Int) {
     A(1) {
@@ -45,6 +48,18 @@ enum class OpponentShape(val value: Int) {
     abstract fun score(playerShape: PlayerShape): Int
 }
 
+/**
+ * The shape what the player chooses.
+ *
+ * The value represents how much does the shape worth. The method score, calculates the points for the first part of
+ * the exercise.
+ *
+ * The first column is what your opponent is going to play: A for Rock, B for Paper, and C for Scissors. The second
+ * column, you reason, must be what you should play in response: X for Rock, Y for Paper, and Z for Scissors. Your
+ * total score is the sum of your scores for each round. The score for a single round is the score for the shape you
+ * selected (1 for Rock, 2 for Paper, and 3 for Scissors) plus the score for the outcome of the round (0 if you lost,
+ * 3 if the round was a draw, and 6 if you won).
+ */
 enum class PlayerShape(val value: Int) {
     X(1) {
         override fun score(opponentShape: OpponentShape): Int {
